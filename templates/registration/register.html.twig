@@ -2,6 +2,14 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+             {{ encore_entry_link_tags('register') }}
+            
+
+            <!-- Renders a link tag (if your module requires any CSS)
+                 <link rel="stylesheet" href="/build/login.css"> -->
+        {% endblock %}
+
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
@@ -11,11 +19,29 @@
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
+        ---------------------------------------------
+<div class="password">
+        <label for="inputPassword">Password</label>
+        <div class="sec-2">
+    <ion-icon name="lock-closed-outline"></ion-icon>
+    <input type="password" name="password" placeholder="············" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+</div>
+</div>
+        ----------------------------------------------
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button script="padding: 1em;" class="login" type="submit">
+    Register
+</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
+
+{% block javascripts %}
+            {{ encore_entry_script_tags('register') }}
+
+            
+        {% endblock %}
