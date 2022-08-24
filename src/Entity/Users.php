@@ -50,9 +50,15 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $role;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Zones::class, inversedBy="users")
+     */
+    private $Zone;
+
     public function __construct()
     {
         $this->role = new ArrayCollection();
+        $this->Zone = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -181,6 +187,30 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeRole(Role $role): self
     {
         $this->role->removeElement($role);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Zones>
+     */
+    public function getZone(): Collection
+    {
+        return $this->Zone;
+    }
+
+    public function addZone(Zones $zone): self
+    {
+        if (!$this->Zone->contains($zone)) {
+            $this->Zone[] = $zone;
+        }
+
+        return $this;
+    }
+
+    public function removeZone(Zones $zone): self
+    {
+        $this->Zone->removeElement($zone);
 
         return $this;
     }

@@ -6,9 +6,7 @@
 
 {% block body %}
 {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
+        
     {% endif %} 
 <form method="post">
     {% if error %}
@@ -52,7 +50,7 @@
                 <input type="checkbox" name="_remember_me"> Remember me
             </label>
         </div>
-  <p><a href="{{path('app_forgot_password_request')}}">Mot de passe oublié ?</p></a>Forgot Password?</span><button script="padding: 1em;" class="login" type="submit">
+  <span><a href="{{path('app_forgot_password_request')}}">Mot de Passe oublié ?</a></span><button script="padding: 1em;" class="login" type="submit">
     Login
 </button>
 

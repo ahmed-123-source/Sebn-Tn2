@@ -1,7 +1,51 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello PkController!{% endblock %}
+{% extends 'afficher.html.twig' %}
 
 {% block body %}
+{{form_start(formsearch)}}
+<div class="form-row align-items-end" >
+<div class="col">
+{{ form_row(formsearch.email) }}
+</div>
+<div class="col">
+<div class="form-group">
+<button type="submit" class="btn btn-success" method="GET">Rechercher</button>
+</div>
+</div>
+</div>
+    {{form_end(formsearch)}}
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_users_show', {'id': user.id}) }}" class="btn btn-primary" style="font-size:15px;">show</a>
+                    <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-info" style="font-size:15px;">edit</a>
+                    <a href="{{ path('app_users_delete', {'id': user.id}) }}" class="btn btn-danger" style="font-size:15px;">Delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_users_new') }}" class="btn btn-primary" style="position: center;">Create new</a>
 {% endblock %}

@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\EditProfileType;
 use App\Entity\Users;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use UsersController;
+
 
 
 class PkController extends AbstractController
@@ -21,7 +23,7 @@ class PkController extends AbstractController
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
-        return $this->render('users/index.html.twig', [
+        return $this->render('users/home.html.twig', [
             'controller_name' => 'PkController',
         ]);
     }
