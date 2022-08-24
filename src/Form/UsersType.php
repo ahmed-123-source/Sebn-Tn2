@@ -17,9 +17,6 @@ class UsersType extends AbstractType
         $builder
             ->add('email')
             ->add('roles', ChoiceType::class, [
-                'required'=> true,
-                'multiple'=> true,
-                'expanded'=> false,
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
                     'Manager' => 'ROLE_MANAGER',

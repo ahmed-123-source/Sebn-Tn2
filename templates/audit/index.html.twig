@@ -1,0 +1,43 @@
+
+
+{% block title %}Audit index{% endblock %}
+
+{% block body %}
+    <h1>Audit index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Projet</th>
+                <th>Score</th>
+                <th>Points_cntrl</th>
+                <th>Description</th>
+                <th>Defaillances</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for audit in audits %}
+            <tr>
+                <td>{{ audit.id }}</td>
+                <td>{{ audit.Projet }}</td>
+                <td>{{ audit.Score }}</td>
+                <td>{{ audit.PointsCntrl }}</td>
+                <td>{{ audit.Description }}</td>
+                <td>{{ audit.Defaillances }}</td>
+                <td>
+                    <a href="{{ path('app_audit_show', {'id': audit.id}) }}">show</a>
+                    <a href="{{ path('app_audit_edit', {'id': audit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_audit_new') }}">Create new</a>
+{% endblock %}
