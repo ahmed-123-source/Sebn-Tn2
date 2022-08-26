@@ -1,0 +1,49 @@
+{% extends 'afficher.html.twig' %}
+
+{% block title %}Liste des PDCA{% endblock %}
+
+{% block body %}
+    <h1>Liste Des PDCA</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Action</th>
+                <th>Pilote</th>
+                <th>Date_deb</th>
+                <th>Date_fin</th>
+                <th>Etat</th>
+                <th>Commentaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pdca in pdcas %}
+            <tr>
+                <td>{{ pdca.id }}</td>
+                <td>{{ pdca.Action }}</td>
+                <td>{{ pdca.Pilote }}</td>
+                <td>{{ pdca.DateDeb ? pdca.DateDeb|date('Y-m-d') : '' }}</td>
+                <td>{{ pdca.DateFin ? pdca.DateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ pdca.Etat }}</td>
+                <td>{{ pdca.Commentaire }}</td>
+                <td>
+                    <a href="{{ path('app_pdca_show', {'id': pdca.id}) }}" class="btn btn-primary" style="font-size:3px;">show</a>
+                    <a href="{{ path('app_pdca_edit', {'id': pdca.id}) }}" class="btn btn-info" style="font-size:3px;">edit</a>
+                    <a href="{{ path('app_pdca_delete', {'id': pdca.id}) }}" class="btn btn-danger btn-lg">
+          <span class="glyphicon glyphicon-trash"></span> Trash 
+        </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pdca_new') }}" class="btn btn-secondary" style="position: center;">Create new</a>
+    
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'afficher.html.twig' %}
+
+{% block title %}Pdca{% endblock %}
+
+{% block body %}
+    <h1>Pdca</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pdca.id }}</td>
+            </tr>
+            <tr>
+                <th>Action</th>
+                <td>{{ pdca.Action }}</td>
+            </tr>
+            <tr>
+                <th>Pilote</th>
+                <td>{{ pdca.Pilote }}</td>
+            </tr>
+            <tr>
+                <th>Date_deb</th>
+                <td>{{ pdca.DateDeb ? pdca.DateDeb|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ pdca.DateFin ? pdca.DateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ pdca.Etat }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ pdca.Commentaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pdca_index') }}"  class="btn btn-secondary" style="font-size:15px;">back to list</a>
+
+    <a href="{{ path('app_pdca_edit', {'id': pdca.id}) }}" class="btn btn-success" style="font-size:15px;">Modifier</a>
+     {{ include('pdca/_delete_form.html.twig') }}
+
+
+{% endblock %}
