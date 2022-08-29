@@ -3,7 +3,6 @@
 {% block title %}Liste des PDCA{% endblock %}
 
 {% block body %}
-    <h1>Liste Des PDCA</h1>
 
     <table class="table">
         <thead>
@@ -29,11 +28,12 @@
                 <td>{{ pdca.Etat }}</td>
                 <td>{{ pdca.Commentaire }}</td>
                 <td>
-                    <a href="{{ path('app_pdca_show', {'id': pdca.id}) }}" class="btn btn-primary" style="font-size:3px;">show</a>
-                    <a href="{{ path('app_pdca_edit', {'id': pdca.id}) }}" class="btn btn-info" style="font-size:3px;">edit</a>
-                    <a href="{{ path('app_pdca_delete', {'id': pdca.id}) }}" class="btn btn-danger btn-lg">
-          <span class="glyphicon glyphicon-trash"></span> Trash 
-        </a>
+        <a href="{{ path('app_pdca_show', {'id': pdca.id}) }}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="{{ path('app_pdca_edit', {'id': pdca.id}) }}" class="btn btn-secondary btn-lg">
+            <span class="glyphicon glyphicon-cog"></span></a>
+         <a href="{{ path('app_pdca_delete', {'id': pdca.id}) }}" class="btn btn-danger btn-lg">
+          <span class="glyphicon glyphicon-trash"></span> </a>
                 </td>
             </tr>
         {% else %}
@@ -43,7 +43,8 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_pdca_new') }}" class="btn btn-secondary" style="position: center;">Create new</a>
+    <a href="{{ path('app_pdca_new') }}" class="btn btn-success btn-lg">
+          <span class="glyphicon glyphicon-plus"></span> Céer 
+        </a>
     
 {% endblock %}

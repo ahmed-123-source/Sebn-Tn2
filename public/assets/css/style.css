@@ -1046,24 +1046,13 @@ section {
   border: 0;
 }
 
-.faq .accordion-button {
-  padding: 15px 15px 20px 0;
-  font-weight: 600;
-  border: 0;
-  font-size: 18px;
-  color: #444444;
-  text-align: left;
-}
+
 
 .faq .accordion-button:focus {
   box-shadow: none;
 }
 
-.faq .accordion-button:not(.collapsed) {
-  background: none;
-  color: #4154f1;
-  border-bottom: 0;
-}
+
 
 .faq .accordion-body {
   padding: 0 0 25px 0;
@@ -1685,14 +1674,7 @@ section {
   padding: 12px 15px;
 }
 
-.contact .php-email-form button[type=submit] {
-  background: #4154f1;
-  border: 0;
-  padding: 10px 30px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 4px;
-}
+
 
 .contact .php-email-form button[type=submit]:hover {
   background: #5969f3;
@@ -2127,13 +2109,8 @@ section {
   line-height: 0;
 }
 
-.blog .sidebar .search-form form button i {
-  line-height: 0;
-}
 
-.blog .sidebar .search-form form button:hover {
-  background: #5465f2;
-}
+
 
 .blog .sidebar .categories ul {
   list-style: none;
